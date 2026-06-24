@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madara Uchiha | The Legendary Ghost</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=Outfit:wght@200;300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Web Audio Ambient / Sound Effects Toggle -->
+    <div class="audio-control" id="audio-control" title="Toggle Ambient Theme">
+        <div class="sound-wave">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <span class="audio-text">Mute</span>
+    </div>
+
+    <!-- Awakening Intro Loader -->
+    <div id="loader" class="loader-container">
+        <div class="loader-content">
+            <div class="eye-wrapper">
+                <!-- SVG Sharingan Eye -->
+                <svg id="loader-eye" viewBox="0 0 200 200" width="180" height="180">
+                    <!-- Eye Base -->
+                    <circle class="eye-base" cx="100" cy="100" r="85" />
+                    
+                    <!-- Rinnegan Rings -->
+                    <g class="rinnegan-rings">
+                        <circle cx="100" cy="100" r="70" class="rinne-ring" />
+                        <circle cx="100" cy="100" r="52" class="rinne-ring" />
+                        <circle cx="100" cy="100" r="34" class="rinne-ring" />
+                    </g>
+                    
+                    <!-- Tomoe Ring (Sharingan) -->
+                    <circle class="tomoe-ring-line" cx="100" cy="100" r="50" />
+                    
+                    <!-- Tomoe Group -->
+                    <g class="tomoe-group">
+                        <!-- Tomoe 1 -->
+                        <g class="tomoe-item" transform="translate(100, 50)">
+                            <path class="tomoe" d="M 0,-8 A 5,5 0 1,0 5,-3 C 5,-1 2,0 0,0 C -2,0 -6,-4 -6,-8 C -6,-12 -3,-13 0,-8" />
+                        </g>
+                        <!-- Tomoe 2 -->
+                        <g class="tomoe-item" transform="translate(143.3, 125) rotate(120)">
+                            <path class="tomoe" d="M 0,-8 A 5,5 0 1,0 5,-3 C 5,-1 2,0 0,0 C -2,0 -6,-4 -6,-8 C -6,-12 -3,-13 0,-8" />
+                        </g>
+                        <!-- Tomoe 3 -->
+                        <g class="tomoe-item" transform="translate(56.7, 125) rotate(240)">
+                            <path class="tomoe" d="M 0,-8 A 5,5 0 1,0 5,-3 C 5,-1 2,0 0,0 C -2,0 -6,-4 -6,-8 C -6,-12 -3,-13 0,-8" />
+                        </g>
+                    </g>
+
+                    <!-- Madara Mangekyou Blades -->
+                    <g class="mangekyou-blades">
+                        <!-- Blade 1 -->
+                        <path class="mangekyou-blade" d="M 100,100 C 100,75 110,60 120,40 C 130,20 115,10 95,20 C 85,25 75,45 85,70 C 90,80 95,95 100,100 Z" />
+                        <!-- Blade 2 (Rotated 120) -->
+                        <path class="mangekyou-blade" d="M 100,100 C 121.65,112.5 132.94,113.4 149.28,111.6 C 168.42,109.58 170.82,126.83 154.5,138.8 C 143.25,147.05 120.72,148.21 118.3,124.8 C 117.3,115.2 108.66,105 100,100 Z" />
+                        <!-- Blade 3 (Rotated 240) -->
+                        <path class="mangekyou-blade" d="M 100,100 C 78.35,112.5 67.06,126.6 50.72,138.4 C 34.58,150.42 24.18,133.17 40.5,121.2 C 51.75,112.95 79.28,101.79 81.7,75.2 C 82.7,65.6 91.34,95 100,100 Z" />
+                    </g>
+
+                    <!-- Izuna Mangekyou (for Eternal Mangekyou) -->
+                    <g class="izuna-mangekyou">
+                        <!-- Center bar elements or outer rings -->
+                        <circle cx="100" cy="100" r="28" class="izuna-ring" />
+                        <path d="M 100,45 C 90,70 90,130 100,155 C 110,130 110,70 100,45 Z" class="izuna-bar" />
+                        <path d="M 100,45 C 90,70 90,130 100,155 C 110,130 110,70 100,45 Z" class="izuna-bar" transform="rotate(120, 100, 100)" />
+                        <path d="M 100,45 C 90,70 90,130 100,155 C 110,130 110,70 100,45 Z" class="izuna-bar" transform="rotate(240, 100, 100)" />
+                    </g>
+
+                    <!-- Pupil -->
+                    <circle class="eye-pupil" cx="100" cy="100" r="14" />
+                </svg>
+            </div>
+            <div class="loader-text-wrapper">
+                <h2 id="loader-quote" class="glitch-text" data-text="Wake up to reality...">Wake up to reality...</h2>
+                <p class="loader-subtitle">Awakening the Legend</p>
+            </div>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">MADARA</span>UCHIHA
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#hero" class="nav-item active">Home</a>
+                <a href="#eye-forge" class="nav-item">Eye Forge</a>
+                <a href="#timeline" class="nav-item">Chronology</a>
+                <a href="#powers" class="nav-item">Prowess</a>
+                <a href="#personality" class="nav-item">Mind</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="tsukuyomi-trigger" id="tsukuyomi-btn" title="Cast Infinite Tsukuyomi">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>Infinite Tsukuyomi</span>
+                </button>
+                <div class="hamburger-menu" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#hero" class="mobile-link">Home</a>
+        <a href="#eye-forge" class="mobile-link">Eye Forge</a>
+        <a href="#timeline" class="mobile-link">Chronology</a>
+        <a href="#powers" class="mobile-link">Prowess</a>
+        <a href="#personality" class="mobile-link">Mind</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <!-- Canvas for Fire Embers Particle System -->
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-glow-overlay"></div>
+        
+        <div class="hero-content">
+            <h3 class="hero-tag">The Ghost of the Uchiha</h3>
+            <h1 class="hero-title glitch-text" data-text="MADARA UCHIHA">MADARA UCHIHA</h1>
+            <p class="hero-description">
+                "In this world, wherever there is light - there are also shadows. As long as the concept of winners exists, there must also be losers."
+            </p>
+            <div class="hero-actions-container">
+                <a href="#eye-forge" class="cta-btn primary-btn scroll-to">
+                    <span>Awaken Sharingan</span>
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+                <a href="#timeline" class="cta-btn secondary-btn scroll-to">
+                    <span>Explore History</span>
+                    <i class="fa-solid fa-scroll"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span class="mouse-icon">
+                <span class="wheel"></span>
+            </span>
+            <span class="scroll-text">Scroll to Descend</span>
+        </div>
+    </section>
+
+    <!-- Eye Forge Interactive Section -->
+    <section id="eye-forge" class="forge-section">
+        <div class="section-header">
+            <h2 class="section-title">THE EYE FORGE</h2>
+            <p class="section-subtitle">Behold the evolution of the ultimate visual prowess (Dōjutsu)</p>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="forge-container">
+            <!-- Left Side: Interactive SVG -->
+            <div class="forge-display">
+                <div class="forge-eye-backdrop"></div>
+                <div class="forge-eye-outer">
+                    <svg id="forge-eye" viewBox="0 0 200 200">
+                        <circle class="eye-base" cx="100" cy="100" r="85" />
+                        
+                        <!-- Concentric Rings (Rinnegan) -->
+                        <g class="forge-rinnegan-rings">
+                            <circle cx="100" cy="100" r="70" class="rinne-ring" />
+                            <circle cx="100" cy="100" r="52" class="rinne-ring" />
+                            <circle cx="100" cy="100" r="34" class="rinne-ring" />
+                        </g>
+
+                        <!-- Base Sharingan Ring Line -->
+                        <circle class="forge-tomoe-ring-line" cx="100" cy="100" r="50" />
+
+                        <!-- Tomoe Group -->
+                        <g class="forge-tomoe-group">
+                            <g class="forge-tomoe-item" id="forge-tomoe-1" transform="translate(100, 50)">
+                                <path class="tomoe" d="M 0,-8 A 5,5 0 1,0 5,-3 C 5,-1 2,0 0,0 C -2,0 -6,-4 -6,-8 C -6,-12 -3,-13 0,-8" />
+                            </g>
+                            <g class="forge-tomoe-item" id="forge-tomoe-2" transform="translate(143.3, 125) rotate(120)">
+                                <path class="tomoe" d="M 0,-8 A 5,5 0 1,0 5,-3 C 5,-1 2,0 0,0 C -2,0 -6,-4 -6,-8 C -6,-12 -3,-13 0,-8" />
+                            </g>
+                            <g class="forge-tomoe-item" id="forge-tomoe-3" transform="translate(56.7, 125) rotate(240)">
+                                <path class="tomoe" d="M 0,-8 A 5,5 0 1,0 5,-3 C 5,-1 2,0 0,0 C -2,0 -6,-4 -6,-8 C -6,-12 -3,-13 0,-8" />
+                            </g>
+                        </g>
+
+                        <!-- Madara Mangekyou Blades -->
+                        <g class="forge-mangekyou-blades">
+                            <path class="mangekyou-blade" d="M 100,100 C 100,75 110,60 120,40 C 130,20 115,10 95,20 C 85,25 75,45 85,70 C 90,80 95,95 100,100 Z" />
+                            <path class="mangekyou-blade" d="M 100,100 C 121.65,112.5 132.94,113.4 149.28,111.6 C 168.42,109.58 170.82,126.83 154.5,138.8 C 143.25,147.05 120.72,148.21 118.3,124.8 C 117.3,115.2 108.66,105 100,100 Z" />
+                            <path class="mangekyou-blade" d="M 100,100 C 78.35,112.5 67.06,126.6 50.72,138.4 C 34.58,150.42 24.18,133.17 40.5,121.2 C 51.75,112.95 79.28,101.79 81.7,75.2 C 82.7,65.6 91.34,95 100,100 Z" />
+                        </g>
+
+                        <!-- Izuna Mangekyou Bars (Eternal) -->
+                        <g class="forge-izuna-mangekyou">
+                            <circle cx="100" cy="100" r="28" class="izuna-ring" />
+                            <path d="M 100,45 C 90,70 90,130 100,155 C 110,130 110,70 100,45 Z" class="izuna-bar" />
+                            <path d="M 100,45 C 90,70 90,130 100,155 C 110,130 110,70 100,45 Z" class="izuna-bar" transform="rotate(120, 100, 100)" />
+                            <path d="M 100,45 C 90,70 90,130 100,155 C 110,130 110,70 100,45 Z" class="izuna-bar" transform="rotate(240, 100, 100)" />
+                        </g>
+
+                        <!-- Pupil -->
+                        <circle class="eye-pupil" cx="100" cy="100" r="14" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Right Side: Controls and Info -->
+            <div class="forge-info">
+                <div class="forge-tabs">
+                    <button class="tab-btn active" data-eye="sharingan">Sharingan</button>
+                    <button class="tab-btn" data-eye="mangekyou">Mangekyō</button>
+                    <button class="tab-btn" data-eye="eternal">Eternal Mangekyō</button>
+                    <button class="tab-btn" data-eye="rinnegan">Rinnegan</button>
+                    <button class="tab-btn" data-eye="rinnesharingan">Rinne Sharingan</button>
+                </div>
+
+                <div class="forge-card">
+                    <h3 class="eye-title" id="eye-title">Three-Tomoe Sharingan</h3>
+                    <p class="eye-description" id="eye-description">
+                        The basic evolutionary form of the Uchiha Clan's kekkei genkai. Grants the user the ability to perceive and track movements at high speeds, copy ninjutsu, and cast powerful genjutsu.
+                    </p>
+                    
+                    <div class="eye-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Visual Clarity</span>
+                            <div class="stat-bar-outer"><div class="stat-bar-inner" id="stat-clarity" style="width: 60%"></div></div>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Genjutsu Potency</span>
+                            <div class="stat-bar-outer"><div class="stat-bar-inner" id="stat-genjutsu" style="width: 50%"></div></div>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Chakra Consumption</span>
+                            <div class="stat-bar-outer"><div class="stat-bar-inner" id="stat-chakra" style="width: 20%"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="eye-quote-box">
+                        <i class="fa-solid fa-quote-left quote-icon"></i>
+                        <p class="eye-quote" id="eye-quote">
+                            "With my eyes, I can see every micro-movement you make. Your speed is nothing before the Uchiha."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dōjutsu Compendium Gallery -->
+    <section id="dojutsu-gallery" class="forge-section">
+        <div class="section-header">
+            <h2 class="section-title">DŌJUTSU COMPENDIUM</h2>
+            <p class="section-subtitle">Where Madara's eyes stand among every great visual prowess of the shinobi world</p>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="gallery-card" style="max-width: 900px; margin: 0 auto; padding: 1.5rem; border-radius: 16px; background: rgba(20,20,20,0.6); border: 1px solid rgba(255,0,0,0.15); box-shadow: 0 0 40px rgba(120,0,0,0.25);">
+            <img src="assets/all_uchiha_eyes.jpg" alt="Complete chart of Uchiha and shinobi dōjutsu, from the Sharingan to the Rinnegan" style="width:100%; height:auto; display:block; border-radius: 10px;">
+            <p class="card-text" style="text-align:center; margin-top: 1rem;">
+                From the humble three-tomoe Sharingan to the eternal Mangekyō shared by Madara and Izuna, and finally to the godlike Rinnegan — Madara walked the entire evolutionary path of the Uchiha eye, surpassed by no other shinobi in dōjutsu mastery.
+            </p>
+        </div>
+    </section>
+
+    <!-- Chronology Timeline Section -->
+    <section id="timeline" class="timeline-section">
+        <div class="section-header">
+            <h2 class="section-title">LEGENDARY CHRONOLOGY</h2>
+            <p class="section-subtitle">Trace the rise, fall, and resurrection of the Ghost of the Uchiha</p>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="timeline-wrapper">
+            <!-- Timeline Center Line -->
+            <div class="timeline-center-line">
+                <div class="timeline-progress-line"></div>
+            </div>
+
+            <!-- Milestone 0 -->
+            <div class="timeline-item left-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-child-reaching"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">Warring Clans Era</span>
+                    <h3 class="timeline-card-title">A Childhood of War</h3>
+                    <p class="timeline-card-desc">
+                        Born the eldest of Tajima Uchiha's five children, Madara lost three siblings young, leaving only his brother Izuna at his side. His ferocious natural chakra let him cut down adult Senju before he had even awakened his Sharingan, earning him a reputation as a genius prodigy of the battlefield.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Milestone 0.5 -->
+            <div class="timeline-item right-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-water"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">Riverside Rivalry</span>
+                    <h3 class="timeline-card-title">A Friendship Across Enemy Lines</h3>
+                    <p class="timeline-card-desc">
+                        In rare moments of peace, Madara befriended a boy his own age, skipping stones and dreaming of a world where children wouldn't have to fight. Only later did they learn the truth — Madara was an Uchiha, the boy was Hashirama Senju. Bound by clan duty, Madara severed the friendship, and the resolve awakened his Sharingan for the first time.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Milestone 1 -->
+            <div class="timeline-item left-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-handshake"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">Era of Warring States</span>
+                    <h3 class="timeline-card-title">Founding of Konoha</h3>
+                    <p class="timeline-card-desc">
+                        After battling Hashirama Senju for years, Madara agreed to unite their clans. Together, they founded Konohagakure, the Village Hidden in the Leaves, establishing a template of peace for the shinobi world.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Milestone 2 -->
+            <div class="timeline-item right-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-skull"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">Valley of the End</span>
+                    <h3 class="timeline-card-title">The Grand Betrayal</h3>
+                    <p class="timeline-card-desc">
+                        Fearing the Uchiha would be marginalized, Madara left the village. He returned with the Nine-Tails under his control, clashing with Hashirama in a battle that carved the Valley of the End. Though defeated, Madara faked his death using Izanagi to plot his ultimate plan.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Milestone 2.5 -->
+            <div class="timeline-item left-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-eye-low-vision"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">Decades in Hiding</span>
+                    <h3 class="timeline-card-title">The Rinnegan Awakens</h3>
+                    <p class="timeline-card-desc">
+                        Living in secret with a graft of Hashirama's flesh embedded in his own body, Madara waited out his final years. In old age, the transplanted cells finally activated, restoring his lost eye and awakening the legendary Rinnegan — power enough to summon the Demonic Statue of the Outer Path itself.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Milestone 2.75 -->
+            <div class="timeline-item right-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-mask"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">Third Shinobi World War</span>
+                    <h3 class="timeline-card-title">The Making of Obito</h3>
+                    <p class="timeline-card-desc">
+                        Finding a dying Obito Uchiha, Madara rebuilt him with Hashirama's cells and patiently corrupted him through orchestrated tragedy. With his dying breath, Madara passed on his knowledge of the Sage of the Six Paths, the Eye of the Moon Plan, and even his own name — leaving Black Zetsu behind to guide his successor.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Milestone 3 -->
+            <div class="timeline-item left-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">4th Great Ninja War</span>
+                    <h3 class="timeline-card-title">Reanimation & Domination</h3>
+                    <p class="timeline-card-desc">
+                        Summoned via Edo Tensei, Madara confronted the entire Allied Shinobi Forces single-handedly. Demonstrating god-like power, he summoned meteors, activated Perfect Susanoo, and laid waste to the army, proving his legendary status.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Milestone 4 -->
+            <div class="timeline-item right-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-moon"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">Six Paths Awakening</span>
+                    <h3 class="timeline-card-title">Infinite Tsukuyomi</h3>
+                    <p class="timeline-card-desc">
+                        By becoming the Ten-Tails Jinchuriki, Madara attained the power of the Sage of Six Paths. He opened his third eye—the Rinne Sharingan—and reflected it off the moon, casting the Infinite Tsukuyomi to trap the world in a dream of eternal peace.
+                    </p>
+                </div>
+            </div>
+            <!-- Milestone 5 -->
+            <div class="timeline-item left-item reveal-on-scroll">
+                <div class="timeline-dot"><i class="fa-solid fa-dove"></i></div>
+                <div class="timeline-content-card">
+                    <span class="timeline-date">Final Moments</span>
+                    <h3 class="timeline-card-title">Breaking the Curse of Hatred</h3>
+                    <p class="timeline-card-desc">
+                        Betrayed by Black Zetsu's ancient machinations, Madara watched his life's plan collapse. In his last breaths he finally saw the flaw in his own philosophy, admitted the superiority of Hashirama's belief in peace, and reconciled with his oldest friend before passing on for good.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="powers" class="powers-section">
+        <div class="section-header">
+            <h2 class="section-title">SHINOBI PROWESS</h2>
+            <p class="section-subtitle">Examine the world-shattering techniques of the legendary Uchiha leader</p>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Power 1 -->
+            <div class="tilt-card" data-tilt>
+                <div class="card-bg" style="background-image: url('assets/susanoo.png');"></div>
+                <div class="card-glow"></div>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="card-title">Perfect Susanoo</h3>
+                    <span class="power-type">Ultimate defense & offense</span>
+                    <p class="card-text">
+                        A colossal manifestation of blue chakra that takes the form of an armored samurai warrior. Its size matches mountains, and a single swing of its blade can cleave landscapes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Power 2 -->
+            <div class="tilt-card" data-tilt>
+                <div class="card-bg" style="background-image: radial-gradient(circle, rgba(20,20,20,0.4) 0%, rgba(10,10,10,0.9) 100%), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="card-glow" style="--glow-color: var(--color-accent);"></div>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-meteor"></i></div>
+                    <h3 class="card-title">Shattered Heaven</h3>
+                    <span class="power-type">Space-time Ninjutsu</span>
+                    <p class="card-text">
+                        Madara draws massive meteors down from the upper atmosphere using the Rinnegan. If the first meteor is stopped, he simply summons a second to crush all remaining resistance.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Power 3 -->
+            <div class="tilt-card" data-tilt>
+                <div class="card-bg" style="background-image: url('assets/six_paths.png');"></div>
+                <div class="card-glow" style="--glow-color: var(--color-purple);"></div>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-ghost"></i></div>
+                    <h3 class="card-title">Limbo: Border Jail</h3>
+                    <span class="power-type">Rinnegan Kekkei Genkai</span>
+                    <p class="card-text">
+                        Madara projects invisible clones into the phantom world of Limbo. These clones are completely undetectable to normal shinobi and can defend or strike with the same physical force as Madara himself.
+                    </p>
+                </div>
+            </div>
+            <!-- Power 4 -->
+            <div class="tilt-card" data-tilt>
+                <div class="card-bg" style="background-image: radial-gradient(circle, rgba(20,20,20,0.4) 0%, rgba(10,10,10,0.9) 100%), url('https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="card-glow" style="--glow-color: var(--color-accent);"></div>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h3 class="card-title">Wood Style Sage Mode</h3>
+                    <span class="power-type">Senjutsu Mastery</span>
+                    <p class="card-text">
+                        Having absorbed senjutsu chakra from Hashirama's own cells, Madara could synchronise it with his own and enter Sage Mode instantly — a feat that normally demands years of training — granting him heightened senses and monstrous physical power.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Power 5 -->
+            <div class="tilt-card" data-tilt>
+                <div class="card-bg" style="background-image: url('assets/izanagi.png');"></div>
+                <div class="card-glow" style="--glow-color: var(--color-purple);"></div>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3 class="card-title">Izanagi</h3>
+                    <span class="power-type">Reality-Altering Genjutsu</span>
+                    <p class="card-text">
+                        The ultimate technique of the Uchiha and Senju combined, Izanagi briefly rewrites reality to turn fiction into truth. Madara scheduled it to activate after his "death" at Hashirama's hands, trading his right eye's vision for a second life spent in hiding.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Power 6 -->
+            <div class="tilt-card" data-tilt>
+                <div class="card-bg" style="background-image: radial-gradient(circle, rgba(20,20,20,0.4) 0%, rgba(10,10,10,0.9) 100%), url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&q=80&w=600');"></div>
+                <div class="card-glow"></div>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-hand-fist"></i></div>
+                    <h3 class="card-title">Unrivalled Taijutsu</h3>
+                    <span class="power-type">Physical Combat</span>
+                    <p class="card-text">
+                        Even unarmed, Madara could calmly demolish thousands of soldiers from the Fourth Division with bare hands, disarming and countering attacks from every direction while overpowering opponents twice his size with terrifying ease.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality & Legacy Section -->
+    <section id="personality" class="powers-section">
+        <div class="section-header">
+            <h2 class="section-title">MIND OF THE GHOST</h2>
+            <p class="section-subtitle">The convictions, contradictions, and ultimate legacy of the Uchiha leader</p>
+            <div class="accent-line"></div>
+        </div>
+
+        <div class="cards-grid">
+            <div class="tilt-card" data-tilt>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-fire"></i></div>
+                    <h3 class="card-title">Curse of Hatred</h3>
+                    <span class="power-type">Personality</span>
+                    <p class="card-text">
+                        Once a kind, reasonable boy devoted to protecting his brother Izuna, Madara's heart hardened into bitterness after Izuna's death, embracing revenge over compromise — yet his bond with Hashirama left him never fully consumed by hatred until his final reconciliation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="tilt-card" data-tilt>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-chess-king"></i></div>
+                    <h3 class="card-title">Eye of the Moon Plan</h3>
+                    <span class="power-type">Philosophy</span>
+                    <p class="card-text">
+                        Convinced the cycle of war was inescapable and humanity incapable of changing, Madara devoted his final decades to a plan that would force eternal peace upon the world through the Infinite Tsukuyomi — believing wholeheartedly that the ends justified any means.
+                    </p>
+                </div>
+            </div>
+
+            <div class="tilt-card" data-tilt>
+                <div class="card-body">
+                    <div class="card-icon"><i class="fa-solid fa-yin-yang"></i></div>
+                    <h3 class="card-title">Respect for Hashirama</h3>
+                    <span class="power-type">Rivalry</span>
+                    <p class="card-text">
+                        No opponent ever earned the regard Madara held for Hashirama. Their decades-long stalemate left him with competing feelings of resentment and admiration, and he would gladly delay his own plans just to prolong a fight against his oldest rival.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="tsukuyomi-overlay" class="tsukuyomi-overlay">
+        <div class="red-flash"></div>
+        <div class="tsukuyomi-moon-container">
+            <!-- Dynamic SVG Rinne Sharingan Moon -->
+            <svg class="tsukuyomi-moon" viewBox="0 0 200 200">
+                <defs>
+                    <radialGradient id="moon-gradient" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#ff1a1a" />
+                        <stop offset="70%" stop-color="#b30000" />
+                        <stop offset="100%" stop-color="#330000" />
+                    </radialGradient>
+                    <filter id="moon-glow">
+                        <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <circle cx="100" cy="100" r="85" fill="url(#moon-gradient)" filter="url(#moon-glow)" />
+                <!-- Concentric Rings -->
+                <circle cx="100" cy="100" r="70" class="moon-ring" />
+                <circle cx="100" cy="100" r="50" class="moon-ring" />
+                <circle cx="100" cy="100" r="30" class="moon-ring" />
+                
+                <!-- 9 Tomoe for Rinne Sharingan Moon -->
+                <!-- Inner Ring Tomoe -->
+                <g transform="translate(100, 70)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+                <g transform="translate(126, 115) rotate(120, 100, 100)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+                <g transform="translate(74, 115) rotate(240, 100, 100)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+
+                <!-- Middle Ring Tomoe -->
+                <g transform="translate(100, 50) scale(1.3)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+                <g transform="translate(143.3, 125) rotate(120, 100, 100) scale(1.3)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+                <g transform="translate(56.7, 125) rotate(240, 100, 100) scale(1.3)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+
+                <!-- Outer Ring Tomoe -->
+                <g transform="translate(100, 30) scale(1.5)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+                <g transform="translate(160.6, 135) rotate(120, 100, 100) scale(1.5)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+                <g transform="translate(39.4, 135) rotate(240, 100, 100) scale(1.5)"><path class="moon-tomoe" d="M 0,-4 A 2.5,2.5 0 1,0 2.5,-1.5 C 2.5,-0.5 1,0 0,0 C -1,0 -3,-2 -3,-4" /></g>
+            </svg>
+        </div>
+        <div class="tsukuyomi-quote-container" id="tsukuyomi-quotes">
+            <!-- Script will spawn phantom floating quotes here -->
+        </div>
+        <button class="tsukuyomi-exit" id="exit-tsukuyomi-btn">
+            <span>Dispel Tsukuyomi</span>
+            <i class="fa-solid fa-eye-slash"></i>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>MADARA UCHIHA</h2>
+                <p>The legendary leader of the Uchiha Clan, co-founder of the Leaf, and architect of the Infinite Tsukuyomi.</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 Uchiha Clan. Crafted with fire style by Hari Krishna & Antigravity.</p>
+                <p class="footer-disclaimer">This is a fan website created for artistic purposes. Naruto is owned by Masashi Kishimoto.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
